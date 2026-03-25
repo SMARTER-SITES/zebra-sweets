@@ -1,17 +1,282 @@
 ---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { homePage, pages, siteMeta } from "../data/site";
 
+const heroPromoImage = "/wp-content/uploads/2017/09/zebra-sweets-klinci-1.jpg";
+const heroSeparatorImage = "/wp-content/uploads/2017/09/home_meat_sep1.png";
+const legacySliderBackground = "/wp-content/uploads/2017/10/SLAJDER-POZADINA-ZEBRA-1.jpg";
+const legacySliderLayers = [
+	{ image: "/wp-content/uploads/2017/10/5-1.png", z: 6 },
+	{ image: "/wp-content/uploads/2017/10/2-1.png", z: 7 },
+	{ image: "/wp-content/uploads/2017/10/3-1.png", z: 8 },
+	{ image: "/wp-content/uploads/2017/10/1-1.png", z: 9 },
+];
+const heroHighlights = [
+	{ title: "Po meri", text: "Birate oblik, boju i ukus, a Zebra pretvara ideju u gotovu tortu." },
+	{ title: "Ručno rađeno", text: "Svaki detalj prolazi kroz pažljivu dekoraciju i završnu obradu." },
+	{ title: "Od 1991.", text: "Porodična tradicija i domaći ukus ostaju srž svakog proizvoda." },
+];
+const storyImage = pages["o-nama-2"].heroImage;
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout
+	title={`${siteMeta.siteName} | 2026`}
+	description="Početna stranica Zebra Sweets sajta u novom Astro/Tailwind dizajnu, sa prenetim sadržajem starog sajta."
+	image={homePage.hero.image}
+>
+	<section class="px-3 pb-5 pt-5 sm:px-5 sm:pb-8 sm:pt-7">
+		<div class="mx-auto w-full max-w-[1380px]">
+			<div class="legacy-slider h-[18rem] sm:h-[28rem] lg:h-[650px]">
+				<img src={legacySliderBackground} alt="" aria-hidden="true" class="legacy-slider__bg" />
+				{legacySliderLayers.map((layer, index) => (
+					<div
+						class:list={["legacy-slider__layer", `legacy-slider__layer--${index + 1}`]}
+						style={`z-index:${layer.z};`}
+					>
+						<img src={layer.image} alt="" aria-hidden="true" />
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<section class="px-3 pb-5 sm:px-5 sm:pb-8">
+		<div class="container-shell">
+			<div class="grid gap-5 lg:grid-cols-[minmax(0,1fr)_26rem] lg:items-start">
+				<div class="space-y-5">
+					<div class="cream-panel p-6 sm:p-8 lg:p-10">
+						<div class="space-y-5">
+							<p class="home-chip">{homePage.hero.kicker}</p>
+							<h1 class="font-display text-[2.75rem] leading-[0.96] text-[var(--ink)] sm:text-5xl lg:text-[3.45rem]">
+								{homePage.hero.title}
+							</h1>
+							<img src={heroSeparatorImage} alt="" aria-hidden="true" class="h-1.5 w-28 object-contain" />
+							<p class="max-w-2xl text-sm leading-7 text-[var(--muted)] sm:text-base">{homePage.hero.text}</p>
+							<div class="flex flex-wrap gap-3 pt-2">
+								<a href={homePage.hero.primaryCta.href} class="zebra-button">
+									{homePage.hero.primaryCta.label}
+								</a>
+								<a href={homePage.hero.secondaryCta.href} class="zebra-button zebra-button--ghost">
+									{homePage.hero.secondaryCta.label}
+								</a>
+							</div>
+							<div class="grid gap-3 pt-3 sm:grid-cols-3">
+								{heroHighlights.map((item) => (
+									<div class="rounded-[1.35rem] border border-black/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.98)_0%,rgba(245,245,247,0.9)_100%)] p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.85)]">
+										<p class="text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-[var(--accent)]">{item.title}</p>
+										<p class="mt-3 text-sm leading-6 text-[var(--muted)]">{item.text}</p>
+									</div>
+								))}
+							</div>
+						</div>
+					</div>
+
+					<div class="trust-rotator" data-trust-rotator>
+						<div class="trust-rotator__top">
+							<div>
+								<p class="trust-rotator__eyebrow">Zebra Sweets od 1991.</p>
+								<p class="trust-rotator__intro">Brojke koje potvrđuju poverenje kupaca, porodičnu tradiciju i dosledan kvalitet.</p>
+							</div>
+							<div class="trust-rotator__dots" aria-label="Promena trust signala">
+								{homePage.trustSignals.map((signal, index) => (
+									<button
+										type="button"
+										class:list={["trust-rotator__dot", index === 0 && "is-active"]}
+										data-trust-dot
+										data-index={index}
+										aria-label={`Prikaži signal ${index + 1}: ${signal.label}`}
+									></button>
+								))}
+							</div>
+						</div>
+
+						<div class="trust-rotator__stage">
+							{homePage.trustSignals.map((signal, index) => (
+								<article
+									class:list={["trust-rotator__item", index === 0 && "is-active"]}
+									data-trust-item
+									aria-hidden={index === 0 ? "false" : "true"}
+								>
+									<p class="trust-rotator__value">
+										<span>{signal.value}</span>
+										{signal.suffix && <span class="trust-rotator__suffix">{signal.suffix}</span>}
+									</p>
+									<div class="space-y-2">
+										<p class="trust-rotator__label">{signal.label}</p>
+										<p class="trust-rotator__copy">{signal.text}</p>
+									</div>
+								</article>
+							))}
+						</div>
+
+						<div class="trust-rotator__rail">
+							{homePage.trustSignals.map((signal) => (
+								<div class="trust-rotator__chip">
+									<span>{signal.value}{signal.suffix}</span>
+									<p>{signal.label}</p>
+								</div>
+							))}
+						</div>
+					</div>
+				</div>
+
+				<a href={homePage.hero.accentCard.href} class="cream-panel group flex h-full flex-col overflow-hidden p-0 lg:sticky lg:top-[8.5rem] lg:max-w-[26rem] lg:justify-self-end">
+					<div class="overflow-hidden rounded-t-[1.8rem]">
+						<img src={heroPromoImage} alt={homePage.hero.accentCard.title} class="home-image h-44 w-full sm:h-56 lg:h-64" />
+					</div>
+					<div class="flex flex-1 flex-col justify-between gap-5 p-5 sm:p-6">
+						<div class="space-y-4">
+							<p class="eyebrow">{homePage.hero.accentCard.eyebrow}</p>
+							<h2 class="font-display text-[2.2rem] leading-[0.96] text-[var(--accent)] sm:text-4xl">{homePage.hero.accentCard.title}</h2>
+							<p class="text-sm leading-7 text-[var(--muted)]">{homePage.hero.accentCard.text}</p>
+							<p class="text-sm leading-6 text-[var(--muted)]">{homePage.hero.accentCard.note}</p>
+						</div>
+						<span class="inline-flex items-center gap-3 text-sm font-semibold uppercase tracking-[0.18em] text-[var(--accent)]">
+							Pogledaj sladoled
+							<span aria-hidden="true">→</span>
+						</span>
+					</div>
+				</a>
+			</div>
+		</div>
+	</section>
+
+	<section id="ponuda" class="px-3 pb-7 sm:px-5 sm:pb-10">
+		<div class="container-shell">
+			<div class="mb-6 max-w-4xl space-y-3">
+				<p class="eyebrow">{homePage.offerIntro}</p>
+				<h2 class="font-display text-4xl leading-[0.94] text-[var(--accent)] sm:text-5xl">{homePage.offerTitle}</h2>
+				<p class="max-w-3xl text-sm leading-7 text-[var(--muted)] sm:text-base">{homePage.offerText}</p>
+			</div>
+
+			<div class="grid gap-4 sm:gap-5 md:grid-cols-2 xl:grid-cols-3">
+				{homePage.offers.map((offer, index) => (
+					<a href={offer.href} class="offer-card group">
+						<div class="offer-card__media">
+							<img
+								src={offer.image}
+								alt={offer.title}
+								class="home-image offer-card__image"
+								style={offer.imagePosition ? `object-position:${offer.imagePosition};` : undefined}
+							/>
+							<div class="offer-card__badge">{String(index + 1).padStart(2, "0")}</div>
+						</div>
+						<div class="offer-card__body">
+							<p class="offer-card__eyebrow">{offer.eyebrow}</p>
+							<h3 class="font-display text-[1.62rem] leading-[0.92] text-[var(--ink)] sm:text-[2rem]">{offer.title}</h3>
+							<p class="offer-card__copy">{offer.text}</p>
+							<span class="offer-card__link">
+								Saznaj više
+								<span aria-hidden="true">→</span>
+							</span>
+						</div>
+					</a>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<section class="px-3 pb-5 sm:px-5 sm:pb-8">
+		<div class="container-shell grid gap-5 xl:grid-cols-[0.98fr_1.02fr]">
+			<div class="cream-panel p-6 sm:p-7">
+				<div class="space-y-5">
+					<p class="eyebrow">{homePage.storyEyebrow}</p>
+					<h2 class="font-display text-4xl leading-[0.94] text-[var(--accent)] sm:text-5xl">Brinemo o jedinstvenom iskustvu koje vam pružamo.</h2>
+					<p class="text-sm leading-7 text-[var(--muted)]">{pages["o-nama-2"].intro}</p>
+				</div>
+
+				<div class="mt-8 grid gap-4 sm:grid-cols-2">
+					{homePage.stats.map((stat) => (
+						<div class="rounded-[1.2rem] bg-white/74 p-4">
+							<p class="font-display text-4xl leading-none text-[var(--accent)]">{stat.value}</p>
+							<p class="mt-3 text-xs uppercase tracking-[0.18em] text-[var(--muted)]">{stat.label}</p>
+							<p class="mt-2 text-sm leading-5 text-[var(--muted)]">{stat.text}</p>
+						</div>
+					))}
+				</div>
+
+				<div class="mt-8 flex flex-wrap gap-3">
+					<a href="/o-nama-2/" class="zebra-button">Saznaj više</a>
+					<a href="/kontakt/" class="zebra-button zebra-button--ghost">Kontakt</a>
+				</div>
+			</div>
+
+			<div class="grid gap-5 sm:grid-cols-2">
+				<div class="editorial-card editorial-card--compact overflow-hidden sm:col-span-2">
+					<img src={storyImage} alt="Zebra Sweets torte" class="home-image h-52 w-full sm:h-[20rem]" />
+				</div>
+				{homePage.gallery.slice(0, 2).map((image, index) => (
+					<div class="editorial-card editorial-card--compact overflow-hidden">
+						<img src={image} alt={`Zebra detalj ${index + 1}`} class="home-image h-40 w-full sm:h-48" />
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<section class="px-3 pb-9 sm:px-5 sm:pb-12">
+		<div class="container-shell">
+			<div class="mb-6 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+				<div class="space-y-3">
+					<p class="eyebrow">Galerija</p>
+					<h2 class="font-display text-4xl leading-[0.94] text-[var(--accent)] sm:text-5xl">{homePage.galleryTitle}</h2>
+				</div>
+				<p class="max-w-xl text-sm leading-7 text-[var(--muted)]">{homePage.galleryText}</p>
+			</div>
+
+			<div class="grid gap-3 sm:gap-4 md:grid-cols-3">
+				{homePage.gallery.map((image, index) => (
+					<div class="editorial-card editorial-card--compact overflow-hidden">
+						<img src={image} alt={`Zebra galerija ${index + 1}`} class="home-image h-52 w-full md:h-56" />
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+	<script is:inline>
+		const trustRotator = document.querySelector("[data-trust-rotator]");
+
+		if (trustRotator) {
+			const items = Array.from(trustRotator.querySelectorAll("[data-trust-item]"));
+			const dots = Array.from(trustRotator.querySelectorAll("[data-trust-dot]"));
+			let activeIndex = 0;
+			let timer;
+
+			const setActiveItem = (index) => {
+				activeIndex = index;
+
+				items.forEach((item, itemIndex) => {
+					const isActive = itemIndex === index;
+					item.classList.toggle("is-active", isActive);
+					item.setAttribute("aria-hidden", String(!isActive));
+				});
+
+				dots.forEach((dot, dotIndex) => {
+					dot.classList.toggle("is-active", dotIndex === index);
+				});
+			};
+
+			const startRotation = () => {
+				if (items.length < 2) return;
+				window.clearInterval(timer);
+				timer = window.setInterval(() => {
+					setActiveItem((activeIndex + 1) % items.length);
+				}, 3200);
+			};
+
+			dots.forEach((dot, index) => {
+				dot.addEventListener("click", () => {
+					window.clearInterval(timer);
+					setActiveItem(index);
+					startRotation();
+				});
+			});
+
+			trustRotator.addEventListener("mouseenter", () => window.clearInterval(timer));
+			trustRotator.addEventListener("mouseleave", startRotation);
+
+			setActiveItem(0);
+			startRotation();
+		}
+	</script>
+</BaseLayout>

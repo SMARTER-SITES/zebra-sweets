@@ -1,0 +1,48 @@
+---
+import { mission, siteMeta, vision } from "../data/site";
+---
+
+<footer class="border-t border-[var(--line)] bg-[rgba(255,248,241,0.62)]">
+	<div class="container-shell grid gap-8 py-14 lg:grid-cols-[1.1fr_0.85fr_0.85fr_1fr]">
+		<div class="space-y-4">
+			<p class="font-display text-4xl text-[var(--accent)]">Zebra Sweets.</p>
+			<p class="max-w-sm text-sm leading-7 text-[var(--muted)]">{siteMeta.tagline}</p>
+			<div class="flex gap-3 pt-2">
+				{siteMeta.socials.map((social) => (
+					<a
+						href={social.href}
+						target="_blank"
+						rel="noreferrer"
+						class="inline-flex h-11 min-w-11 items-center justify-center rounded-full border border-[var(--line)] bg-white/80 px-4 text-xs font-semibold uppercase tracking-[0.2em] text-[var(--accent)]"
+					>
+						{social.label === "Instagram" ? "IG" : "FB"}
+					</a>
+				))}
+			</div>
+		</div>
+		<div class="space-y-4">
+			<p class="eyebrow">Vizija</p>
+			<p class="text-sm leading-7 text-[var(--muted)]">{vision}</p>
+		</div>
+		<div class="space-y-4">
+			<p class="eyebrow">Misija</p>
+			<p class="text-sm leading-7 text-[var(--muted)]">{mission}</p>
+		</div>
+		<div class="space-y-4">
+			<p class="eyebrow">Kontakt</p>
+			<a href={`tel:${siteMeta.phone}`} class="block text-lg text-[var(--accent)]">{siteMeta.phone}</a>
+			{siteMeta.emails.map((email) => (
+				<a href={`mailto:${email}`} class="block text-sm text-[var(--muted)] transition hover:text-[var(--accent)]">
+					{email}
+				</a>
+			))}
+			<a href="/kontakt/" class="zebra-button mt-2">Pošaljite upit</a>
+		</div>
+	</div>
+	<div class="border-t border-[var(--line)]">
+		<div class="container-shell flex flex-col gap-3 py-5 text-xs uppercase tracking-[0.28em] text-[var(--muted)] sm:flex-row sm:items-center sm:justify-between">
+			<p>© 2026 Zebra Sweets. Sva prava zadržana.</p>
+			<p>{siteMeta.footerNote}</p>
+		</div>
+	</div>
+</footer>

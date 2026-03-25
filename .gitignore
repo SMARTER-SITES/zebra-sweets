@@ -22,3 +22,9 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# local tooling and deployment artifacts
+.netlify/
+.playwright-cli/
+deploy/
+output/

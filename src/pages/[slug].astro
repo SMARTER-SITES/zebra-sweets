@@ -1,0 +1,273 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { pages, siteMeta } from "../data/site";
+
+export function getStaticPaths() {
+	return Object.entries(pages).map(([slug, page]) => ({
+		params: { slug },
+		props: { page },
+	}));
+}
+
+const { page } = Astro.props;
+const isAboutPage = Astro.url.pathname === "/o-nama-2/";
+const isRibbonHeroPage = [
+	"/torte/",
+	"/ukusi/",
+	"/standardne-torte/",
+	"/posne-torte/",
+	"/torte-po-porudzbini/",
+	"/sladoled/",
+	"/sitni-kolaci/",
+	"/praline/",
+	"/zito/",
+].includes(Astro.url.pathname);
+const isLegacyTilesPage = Astro.url.pathname === "/torte/";
+const legacyDividerImage = "/wp-content/uploads/2017/09/home_meat_sep2.png";
+const heroSectionClass = isLegacyTilesPage
+	? "relative isolate overflow-hidden pt-6 pb-8 sm:pt-8 sm:pb-10"
+	: isRibbonHeroPage
+		? "relative isolate overflow-hidden pt-8 pb-12 sm:pt-10 sm:pb-14"
+		: "relative isolate overflow-hidden section-gap";
+---
+
+<BaseLayout
+	title={`${page.title} | ${siteMeta.siteName}`}
+	description={page.description}
+	image={page.heroImage}
+>
+		<section class={heroSectionClass}>
+			<div class="container-shell">
+				{isRibbonHeroPage ? (
+					<div class="space-y-10">
+						<div class="overflow-hidden rounded-[2rem] border border-white/75 bg-white/72 shadow-[0_18px_48px_rgba(10,10,12,0.08)]">
+							<img src={page.heroImage} alt={page.title} class="h-[9.5rem] w-full object-cover object-center sm:h-[11rem] lg:h-[13rem]" />
+						</div>
+						{!isLegacyTilesPage && (
+							<div class="mx-auto max-w-5xl text-center">
+								<div class="space-y-6 px-4 py-2 sm:px-8">
+									<h1 class="font-serif text-4xl text-[var(--ink)] sm:text-5xl lg:text-6xl">{page.title}</h1>
+									<img src={legacyDividerImage} alt="" class="mx-auto h-16 w-auto opacity-75" />
+									<div class="mx-auto max-w-4xl space-y-5 text-balance text-base leading-8 text-[var(--muted)] sm:text-lg">
+										{page.intro && <p>{page.intro}</p>}
+										{page.note && <p>{page.note}</p>}
+									</div>
+									{page.promoImage && (
+										<a
+											href={page.promoHref || "#"}
+											class="mx-auto block w-full max-w-[24rem] transition duration-500 hover:translate-y-[-3px] hover:scale-[1.02]"
+										>
+											<img
+												src={page.promoImage}
+												alt={page.promoAlt || page.title}
+												class="mx-auto h-auto w-full object-contain"
+											/>
+										</a>
+									)}
+								</div>
+							</div>
+						)}
+					</div>
+				) : (
+				<div class="grid items-center gap-12 lg:grid-cols-[0.9fr_1.1fr]">
+					<div class="space-y-6">
+						<p class="eyebrow">{page.eyebrow}</p>
+						<h1 class="section-title max-w-2xl">{page.title}</h1>
+						<p class="section-copy max-w-2xl">{page.intro}</p>
+						{page.note && <p class="rounded-3xl border border-[var(--line)] bg-white/60 px-5 py-4 text-sm leading-7 text-[var(--muted)]">{page.note}</p>}
+					</div>
+					<div class="relative overflow-hidden rounded-[2rem] glass-card">
+						<div class="grain-overlay relative">
+							<img src={page.heroImage} alt={page.title} class="h-[28rem] w-full object-cover" />
+						</div>
+					</div>
+				</div>
+			)}
+		</div>
+	</section>
+
+	{page.sections && (
+		<section class="pb-24">
+			<div class="container-shell grid gap-6 md:grid-cols-3">
+				{page.sections.map((section) => (
+					<article class="glass-card rounded-[2rem] p-8">
+						<h2 class="mb-4 text-2xl">{section.title}</h2>
+						<p class="section-copy text-base">{section.text}</p>
+					</article>
+				))}
+			</div>
+		</section>
+	)}
+
+	{page.tiles && (
+		<section class="pb-18 sm:pb-22">
+			<div class="container-shell">
+				<div class="mb-8 text-center sm:mb-10">
+					<h1 class="font-serif text-4xl text-[var(--ink)] sm:text-5xl">{page.title}</h1>
+					<img src={legacyDividerImage} alt="" class="mx-auto mt-3 h-16 w-auto opacity-75" />
+				</div>
+				<div class="grid gap-x-8 gap-y-8 md:grid-cols-2 xl:grid-cols-4">
+				{page.tiles.map((tile) => (
+						<a href={tile.href} class="group block text-center">
+							<img src={tile.image} alt={tile.title} class="mx-auto h-auto w-full max-w-[300px] transition duration-500 group-hover:scale-[1.03]" />
+							<h2 class="mt-6 text-lg uppercase tracking-[0.18em] text-[var(--ink)] sm:text-xl">{tile.title}</h2>
+						</a>
+				))}
+				</div>
+			</div>
+		</section>
+	)}
+
+	{page.catalogSections && (
+		<section class="pb-24">
+			<div class="container-shell space-y-14">
+				{page.catalogSections.map((section) => (
+					<div class="space-y-8">
+						{section.badgeImage && <img src={section.badgeImage} alt={section.title || ""} class="mx-auto h-auto max-w-[18rem] object-contain" />}
+						{section.title && !section.badgeImage && <h2 class="text-center font-serif text-3xl text-[var(--ink)] sm:text-4xl">{section.title}</h2>}
+						<div
+							class:list={[
+								"grid gap-x-8 gap-y-10",
+								section.columns === 3 ? "md:grid-cols-2 xl:grid-cols-3" : "md:grid-cols-2 xl:grid-cols-4",
+							]}
+						>
+							{section.items.map((item) => (
+								<article class="text-center">
+									<img src={item.image} alt={item.title} class="mx-auto h-auto w-full max-w-[270px]" loading="lazy" />
+									<h3 class="mt-5 text-lg font-semibold uppercase tracking-[0.14em] text-[var(--ink)]">{item.title}</h3>
+									<p class="mx-auto mt-3 max-w-[18rem] text-sm leading-7 text-[var(--muted)]">{item.text}</p>
+									{item.note && <p class="mx-auto mt-3 max-w-[18rem] text-sm leading-6 text-[#b44545]">{item.note}</p>}
+								</article>
+							))}
+						</div>
+					</div>
+				))}
+			</div>
+		</section>
+	)}
+
+	{page.tasteGroups && (
+		<section class="pb-24">
+			<div class="container-shell space-y-10">
+				{page.tasteGroups.map((group) => (
+					<div class="space-y-5">
+						<h2 class="text-3xl">{group.title}</h2>
+						<div class="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+							{group.items.map(([name, text]) => (
+								<article class="rounded-[2rem] border border-[var(--line)] bg-white/75 p-6">
+									<h3 class="mb-3 text-xl uppercase tracking-[0.12em]">{name}</h3>
+									<p class="text-sm leading-7 text-[var(--muted)]">{text}</p>
+								</article>
+							))}
+						</div>
+					</div>
+				))}
+			</div>
+		</section>
+	)}
+
+	{page.links && (
+		<section class="pb-24">
+			<div class="container-shell grid gap-6 lg:grid-cols-3">
+				{page.links.map((link) => (
+					<article class="overflow-hidden rounded-[2rem] border border-white/75 bg-white/78 shadow-[0_18px_42px_rgba(10,10,12,0.06)]">
+						{link.image && (
+							<div class="overflow-hidden">
+								<img src={link.image} alt={link.title} class="h-60 w-full object-cover transition duration-500 hover:scale-[1.03]" />
+							</div>
+						)}
+						<div class="space-y-4 p-8">
+							<h2 class="text-2xl">{link.title}</h2>
+							<p class="text-sm leading-7 text-[var(--muted)]">{link.text}</p>
+							<a class="zebra-button" href={link.href} target="_blank" rel="noreferrer">Otvori album</a>
+						</div>
+					</article>
+				))}
+			</div>
+		</section>
+	)}
+
+	{page.locations && (
+		<section id={Astro.url.pathname === "/kontakt/" ? "maloprodaja" : undefined} class="scroll-mt-32 pb-24">
+			<div class="container-shell grid gap-8 xl:grid-cols-2">
+				{page.locations.map((location) => (
+					<article class="overflow-hidden rounded-[2rem] glass-card">
+						<div class="grid gap-2 md:grid-cols-2">
+							{location.images.map((image) => <img src={image} alt={location.name} class="h-56 w-full object-cover" />)}
+						</div>
+						<div class="space-y-4 p-8">
+							<h2 class="text-2xl">{location.name}</h2>
+							<p class="text-sm uppercase tracking-[0.18em] text-[var(--accent)]">{location.address}</p>
+							<p class="text-sm leading-7 text-[var(--muted)]">Telefon: {location.phone}</p>
+							{location.email && <p class="text-sm leading-7 text-[var(--muted)]">Email: {location.email}</p>}
+							{location.email2 && <p class="text-sm leading-7 text-[var(--muted)]">Email: {location.email2}</p>}
+							<ul class="space-y-1 text-sm leading-7 text-[var(--muted)]">
+								{location.hours.map((line) => <li>{line}</li>)}
+							</ul>
+						</div>
+					</article>
+				))}
+			</div>
+		</section>
+	)}
+
+	{page.gallery && (
+		<section class="pb-24">
+			<div class="container-shell">
+				{isAboutPage ? (
+					<div class="grid gap-5 lg:grid-cols-[1.08fr_0.92fr]">
+						<div class="overflow-hidden rounded-[2rem] border border-[var(--line)] bg-white/78 shadow-[0_18px_42px_rgba(10,10,12,0.06)]">
+							<img src={page.gallery[0]} alt={`${page.title} 1`} class="h-[22rem] w-full object-cover sm:h-[26rem] lg:h-[34rem]" loading="lazy" />
+						</div>
+						<div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-1">
+							{page.gallery.slice(1).map((image, index) => (
+								<div class="overflow-hidden rounded-[2rem] border border-[var(--line)] bg-white/78 shadow-[0_18px_42px_rgba(10,10,12,0.06)]">
+									<img src={image} alt={`${page.title} ${index + 2}`} class="h-[16rem] w-full object-cover sm:h-[18rem] lg:h-[16.45rem]" loading="lazy" />
+								</div>
+							))}
+						</div>
+					</div>
+				) : (
+					<div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+						{page.gallery.map((image, index) => (
+							<div class="overflow-hidden rounded-[1.75rem] border border-white/75 bg-white/72 shadow-[0_14px_34px_rgba(10,10,12,0.05)]">
+								<img src={image} alt={`${page.title} ${index + 1}`} class="h-72 w-full object-cover transition duration-500 hover:scale-[1.03]" loading="lazy" />
+							</div>
+						))}
+					</div>
+				)}
+			</div>
+		</section>
+	)}
+
+	{page.postSections && !isRibbonHeroPage && (
+		<section class="pb-24">
+			<div class="container-shell grid gap-6 lg:grid-cols-2">
+				{page.postSections.map((section) => (
+					<article class="glass-card rounded-[2rem] p-8 sm:p-10">
+						<p class="eyebrow">{section.title}</p>
+						<p class="section-copy mt-4 text-base">{section.text}</p>
+					</article>
+				))}
+			</div>
+		</section>
+	)}
+
+	{Astro.url.pathname === "/kontakt/" && (
+		<section id="direktan-kontakt" class="scroll-mt-32 pb-24">
+			<div class="container-shell">
+				<div class="glass-card rounded-[2rem] p-8 sm:p-10">
+					<p class="eyebrow">Posaljite poruku</p>
+					<h2 class="mt-3 text-3xl">Javite nam se direktno</h2>
+					<p class="mt-4 max-w-2xl text-sm leading-7 text-[var(--muted)]">
+						Originalni sajt je imao kontakt formu. U ovoj Astro verziji ostavili smo brz i jednostavan kontakt preko telefona i emaila dok se ne doda backend za slanje poruka.
+					</p>
+					<div class="mt-8 flex flex-wrap gap-4">
+						<a href={`tel:${siteMeta.phone}`} class="zebra-button">Pozovite nas</a>
+						<a href={`mailto:${siteMeta.emails[0]}`} class="zebra-button zebra-button--ghost">Posaljite email</a>
+					</div>
+				</div>
+			</div>
+		</section>
+	)}
+</BaseLayout>
