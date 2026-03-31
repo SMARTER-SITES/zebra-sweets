@@ -291,7 +291,7 @@ export const pages = {
 					{ title: "Šumsko voće", image: "/wp-content/uploads/2017/10/27.png", text: "Kakao korice sa džemom od kajsija, biljna pavlaka, voćno punjenje šumsko voće, malina." },
 					{ title: "Švarcvald", image: "/wp-content/uploads/2017/10/visnja-sara-1.png", text: "Kakao korice sa džemom od kajsija, biljna pavlaka, voćno punjenje višnja." },
 					{ title: "Oranž", image: "/wp-content/uploads/2017/10/28.png", text: "Kakao korice sa džemom od kajsija, biljna pavlaka, voćno punjenje pomorandža, čokolada." },
-					{ title: "Tofi", image: "/wp-content/uploads/2017/10/18.png", text: "Kakao korice sa džemom od kajsija, biljna pavlaka, karamel pasta, grilijaž šećer." },
+					{ title: "Karamel", image: "/wp-content/uploads/2017/10/18.png", text: "Kakao korice sa džemom od kajsija, biljna pavlaka, karamel pasta, grilijaž šećer." },
 					{ title: "Sniker kejk", image: "/wp-content/uploads/2017/10/23.png", text: "Kakao korice sa džemom od kajsija, biljna pavlaka, karamel pasta, seckani kikiriki." },
 				],
 			},
