@@ -298,25 +298,25 @@ export const pages = {
 		],
 	},
 	"torte-po-porudzbini": {
-		title: "Torte po porudzbini",
+		title: "Torte po porudžbini",
 		eyebrow: "Custom dizajn",
-		description: "Decije, svecane i svadbene torte po zelji.",
+		description: "Dečje, svečane i svadbene torte po želji.",
 		heroImage: "/wp-content/uploads/2017/11/TORTE-PO-PORUDZBINI-1.jpg",
 		intro:
 			"Želite li vašeg omiljenog junaka u obliku torte za rođendan ili svečanu tortu koja će na najbolji mogući način upotpuniti vašu proslavu? Mašta radi svašta, a vredne i kreativne ruke naših dekoratera pretvoriće maštu u stvarnost. Vaše je samo da zamislite željeni oblik i izaberete svoj omiljeni ukus naših Zebra torti.",
-		note: "Kada se odlucite za dizajn torte, vreme je da izaberete i savrseni ukus koji ce probuditi sva vasa cula.",
+		note: "Kada se odlučite za dizajn torte, vreme je da izaberete i savršeni ukus koji će probuditi sva vaša čula.",
 		promoImage: "/wp-content/uploads/2017/11/UKUSI-1.png",
 		promoHref: "/ukusi/",
 		promoAlt: "Pogledajte ukuse Zebra torti",
 		links: [
 				{
-					title: "Decije torte",
+					title: "Dečje torte",
 					text: "Ukoliko želite da vidite naše dosadašnje radove, kliknite na Facebook ikonicu albuma.",
 					image: "/wp-content/uploads/2017/09/decija.webp",
 					href: "https://www.facebook.com/media/set/?set=a.156526941073785.32947.156522851074194&type=1",
 				},
 				{
-					title: "Svecane torte",
+					title: "Svečane torte",
 					text: "Album sa svečanim tortama i dekoracijama.",
 					image: "/wp-content/uploads/2017/09/svecana.webp",
 					href: "https://www.facebook.com/media/set/?set=a.156534574406355.32956.156522851074194&type=1",
