@@ -1,0 +1,7 @@
+<IfModule mod_headers.c>
+    <FilesMatch "^(favicon\.ico|favicon-32\.png|apple-touch-icon\.png|favicon-zebra-v2\.ico|favicon-zebra-v2\.png|apple-touch-icon-zebra-v2\.png)$">
+        Header set Cache-Control "no-store, no-cache, must-revalidate, max-age=0"
+        Header set Pragma "no-cache"
+        Header set Expires "0"
+    </FilesMatch>
+</IfModule>
