@@ -309,24 +309,24 @@ export const pages = {
 		promoHref: "/ukusi/",
 		promoAlt: "Pogledajte ukuse Zebra torti",
 		links: [
-			{
-				title: "Decije torte",
-				text: "Ukoliko želite da vidite naše dosadašnje radove, kliknite na Facebook ikonicu albuma.",
-				image: "/wp-content/uploads/2017/10/Zebra-torte-0-JohnWolfrik.com-1.jpg",
-				href: "https://www.facebook.com/media/set/?set=a.156526941073785.32947.156522851074194&type=1",
-			},
-			{
-				title: "Svecane torte",
-				text: "Album sa svečanim tortama i dekoracijama.",
-				image: "/wp-content/uploads/2017/10/Zebra-torte-1JohnWolfrik.com-1.jpg",
-				href: "https://www.facebook.com/media/set/?set=a.156534574406355.32956.156522851074194&type=1",
-			},
-			{
-				title: "Svadbene torte",
-				text: "Album sa svadbenim tortama i idejama za dekor.",
-				image: "/wp-content/uploads/2017/09/zebra-sweets-torte-4-1.jpg",
-				href: "https://www.facebook.com/media/set/?set=a.156528897740256.32949.156522851074194&type=1",
-			},
+				{
+					title: "Decije torte",
+					text: "Ukoliko želite da vidite naše dosadašnje radove, kliknite na Facebook ikonicu albuma.",
+					image: "/wp-content/uploads/2017/09/decija.webp",
+					href: "https://www.facebook.com/media/set/?set=a.156526941073785.32947.156522851074194&type=1",
+				},
+				{
+					title: "Svecane torte",
+					text: "Album sa svečanim tortama i dekoracijama.",
+					image: "/wp-content/uploads/2017/09/svecana.webp",
+					href: "https://www.facebook.com/media/set/?set=a.156534574406355.32956.156522851074194&type=1",
+				},
+				{
+					title: "Svadbene torte",
+					text: "Album sa svadbenim tortama i idejama za dekor.",
+					image: "/wp-content/uploads/2017/09/svadbena.webp",
+					href: "https://www.facebook.com/media/set/?set=a.156528897740256.32949.156522851074194&type=1",
+				},
 		],
 	},
 	sladoled: {

@@ -11,6 +11,7 @@ export function getStaticPaths() {
 
 const { page } = Astro.props;
 const isAboutPage = Astro.url.pathname === "/o-nama-2/";
+const isCustomOrderCakesPage = Astro.url.pathname === "/torte-po-porudzbini/";
 const isRibbonHeroPage = [
 	"/torte/",
 	"/ukusi/",
@@ -198,15 +199,34 @@ const heroSectionClass = isLegacyTilesPage
 
 	{page.links && (
 		<section class="pb-24">
-			<div class="container-shell grid gap-6 lg:grid-cols-3">
+			<div
+				class:list={[
+					"container-shell grid gap-6 lg:grid-cols-3",
+					isCustomOrderCakesPage && "justify-items-center",
+				]}
+			>
 				{page.links.map((link) => (
-					<article class="overflow-hidden rounded-[2rem] border border-white/75 bg-white/78 shadow-[0_18px_42px_rgba(10,10,12,0.06)]">
-						{link.image && (
-							<div class="overflow-hidden">
-								<img src={link.image} alt={link.title} class="h-60 w-full object-cover transition duration-500 hover:scale-[1.03]" />
-							</div>
-						)}
-						<div class="space-y-4 p-8">
+					<article
+						class:list={[
+							"overflow-hidden rounded-[2rem] border border-white/75 bg-white/78 shadow-[0_18px_42px_rgba(10,10,12,0.06)]",
+							isCustomOrderCakesPage && "w-full max-w-[22rem]",
+						]}
+					>
+							{link.image && (
+								<div class="overflow-hidden">
+									<img
+										src={link.image}
+										alt={link.title}
+										class:list={[
+											"w-full transition duration-500 hover:scale-[1.03]",
+											isCustomOrderCakesPage
+												? "aspect-[4/5] object-cover object-top"
+												: "h-60 object-cover",
+										]}
+									/>
+								</div>
+							)}
+							<div class="space-y-4 p-8">
 							<h2 class="text-2xl">{link.title}</h2>
 							<p class="text-sm leading-7 text-[var(--muted)]">{link.text}</p>
 							<a class="zebra-button" href={link.href} target="_blank" rel="noreferrer">Otvori album</a>
