@@ -146,25 +146,55 @@ const heroSectionClass = isLegacyTilesPage
 		</section>
 	)}
 
-	{page.tasteGroups && (
-		<section class="pb-24">
-			<div class="container-shell space-y-10">
-				{page.tasteGroups.map((group) => (
-					<div class="space-y-5">
-						<h2 class="text-3xl">{group.title}</h2>
-						<div class="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-							{group.items.map(([name, text]) => (
-								<article class="rounded-[2rem] border border-[var(--line)] bg-white/75 p-6">
-									<h3 class="mb-3 text-xl uppercase tracking-[0.12em]">{name}</h3>
-									<p class="text-sm leading-7 text-[var(--muted)]">{text}</p>
-								</article>
-							))}
+		{page.tasteGroups && (
+			<section class="pb-24">
+				<div class="container-shell space-y-10">
+					{page.tasteGroups.map((group) => (
+						<div class="space-y-5">
+							{group.title && <h2 class="text-center font-serif text-3xl text-[var(--ink)] sm:text-4xl">{group.title}</h2>}
+							{group.variant === "list" ? (
+								<div class="mx-auto max-w-5xl overflow-hidden rounded-[2rem] border border-white/75 bg-[linear-gradient(180deg,rgba(255,255,255,0.9)_0%,rgba(246,246,248,0.82)_100%)] shadow-[0_18px_42px_rgba(10,10,12,0.06)]">
+									<div class="hidden border-b border-[var(--line)] bg-[rgba(244,244,247,0.92)] lg:grid lg:grid-cols-[minmax(0,15rem)_1fr]">
+										<p class="border-r border-[var(--line)] px-8 py-4 text-[0.72rem] font-semibold uppercase tracking-[0.32em] text-[var(--muted)]">Ukus</p>
+										<p class="px-8 py-4 text-[0.72rem] font-semibold uppercase tracking-[0.32em] text-[var(--muted)]">Opis</p>
+									</div>
+									<div class="divide-y divide-[var(--line)]">
+										{group.items.map(([name, text], index) => (
+											<article
+												class:list={[
+													"grid gap-3 px-6 py-5 sm:px-8 lg:grid-cols-[minmax(0,15rem)_1fr] lg:items-start lg:gap-0",
+													index % 2 === 0 ? "lg:bg-white/52" : "lg:bg-[rgba(242,242,245,0.72)]",
+												]}
+											>
+												<div class="lg:border-r lg:border-[var(--line)] lg:pr-6">
+													<p class="mb-2 text-[0.62rem] font-semibold uppercase tracking-[0.3em] text-[var(--muted)] lg:hidden">Ukus</p>
+													<h3 class="max-w-max rounded-full border border-[rgba(18,18,18,0.08)] bg-white/78 px-4 py-2 text-base font-semibold uppercase tracking-[0.18em] text-[var(--ink)] sm:text-lg">
+														{name}
+													</h3>
+												</div>
+												<div class="lg:pl-6">
+													<p class="mb-2 text-[0.62rem] font-semibold uppercase tracking-[0.3em] text-[var(--muted)] lg:hidden">Opis</p>
+													<p class="max-w-2xl text-sm leading-7 text-[var(--muted)] sm:text-[0.96rem]">{text}</p>
+												</div>
+											</article>
+										))}
+									</div>
+								</div>
+							) : (
+								<div class="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+									{group.items.map(([name, text]) => (
+										<article class="rounded-[2rem] border border-[var(--line)] bg-white/75 p-6">
+											<h3 class="mb-3 text-xl uppercase tracking-[0.12em]">{name}</h3>
+											<p class="text-sm leading-7 text-[var(--muted)]">{text}</p>
+										</article>
+									))}
+								</div>
+							)}
 						</div>
-					</div>
-				))}
-			</div>
-		</section>
-	)}
+					))}
+				</div>
+			</section>
+		)}
 
 	{page.links && (
 		<section class="pb-24">

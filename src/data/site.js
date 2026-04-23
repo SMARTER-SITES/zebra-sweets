@@ -267,7 +267,6 @@ export const pages = {
 					{ title: "Voćna mix", image: "/wp-content/uploads/2017/10/vocna-mix-sara.png", text: "Korice sa kakaom, vanila krem, razno crveno voće, šlag." },
 					{ title: "Malaga", image: "/wp-content/uploads/2017/10/treca-proba.png", text: "Žute korice, krem sa malaga pastom, rum, suvo grožđe, šlag." },
 					{ title: "Margareta", image: "/wp-content/uploads/2017/10/margareta-pozadina-1.png", text: "Žute korice, krem sa kokosom, šlag." },
-					{ title: "Tropsko voće", image: "/wp-content/uploads/2017/10/24.png", text: "Žute korice, vanila krema, kivi, ananas, narandža, šlag." },
 					{ title: "Švarcvald", image: "/wp-content/uploads/2017/10/visnja-sara-1.png", text: "Kakao korice, vanila krema, voćno punjenje višnja, šlag." },
 					{ title: "Oranž", image: "/wp-content/uploads/2017/10/28.png", text: "Korice sa kakaom, vanila krem, voćno punjenje narandža, čokolada, šlag." },
 					{ title: "Šumsko voće", image: "/wp-content/uploads/2017/10/27.png", text: "Korice sa kakaom, vanila krem, voćno punjenje šumsko voće, malina." },
@@ -283,16 +282,17 @@ export const pages = {
 		intro:
 			"Posna trpeza se svakako ne može zamisliti bez ukusnih i slasnih poslastica, a najbolja poslastica su svakako torte. Bogatstvo ukusa ovih torti je nešto što će udovoljiti svakom sladokuscu i oduševiti svakog vašeg gosta.",
 		note: "Prave se u tri veličine. Četvrtaste od 1,5 i 2,9kg. Okrugle od 2,1kg.",
-		catalogSections: [
+		tasteGroups: [
 			{
-				columns: 3,
+				title: "Ukusi",
+				variant: "list",
 				items: [
-					{ title: "Čokolada", image: "/wp-content/uploads/2017/10/cokolada-sara.png", text: "Kakao korice sa džemom od kajsija, biljna pavlaka, čokolada, orah, rum, suvo grožđe." },
-					{ title: "Šumsko voće", image: "/wp-content/uploads/2017/10/27.png", text: "Kakao korice sa džemom od kajsija, biljna pavlaka, voćno punjenje šumsko voće, malina." },
-					{ title: "Švarcvald", image: "/wp-content/uploads/2017/10/visnja-sara-1.png", text: "Kakao korice sa džemom od kajsija, biljna pavlaka, voćno punjenje višnja." },
-					{ title: "Oranž", image: "/wp-content/uploads/2017/10/28.png", text: "Kakao korice sa džemom od kajsija, biljna pavlaka, voćno punjenje pomorandža, čokolada." },
-					{ title: "Karamel", image: "/wp-content/uploads/2017/10/18.png", text: "Kakao korice sa džemom od kajsija, biljna pavlaka, karamel pasta, grilijaž šećer." },
-					{ title: "Sniker kejk", image: "/wp-content/uploads/2017/10/23.png", text: "Kakao korice sa džemom od kajsija, biljna pavlaka, karamel pasta, seckani kikiriki." },
+					["Čokolada", "Kakao korice sa džemom od kajsija, biljna pavlaka, čokolada, orah, rum, suvo grožđe."],
+					["Šumsko voće", "Kakao korice sa džemom od kajsija, biljna pavlaka, voćno punjenje šumsko voće, malina."],
+					["Švarcvald", "Kakao korice sa džemom od kajsija, biljna pavlaka, voćno punjenje višnja."],
+					["Oranž", "Kakao korice sa džemom od kajsija, biljna pavlaka, voćno punjenje pomorandža, čokolada."],
+					["Tofi", "Kakao korice sa džemom od kajsija, biljna pavlaka, karamel pasta, grilijaž šećer."],
+					["Sniker kejk", "Kakao korice sa džemom od kajsija, biljna pavlaka, karamel pasta, seckani kikiriki."],
 				],
 			},
 		],
