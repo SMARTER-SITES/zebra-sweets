@@ -200,7 +200,7 @@ export const pages = {
 			{
 				badgeImage: "/wp-content/uploads/2017/10/krem-i-coko-ukusi-1.png",
 				items: [
-					{ title: "Belgijska pralina", image: "/wp-content/uploads/2017/10/8.png", text: "Korice sa kakaom, čokoladni fil sa mlevenim keksom i vanila fil sa seckanom mlečnom čokoladom." },
+					{ title: "Belgijska pralina", image: "/wp-content/uploads/2017/10/8.png", text: "Korice sa kakaom, čokoladni fil sa mlevenim keksom, rum i vanila fil sa seckanom mlečnom čokoladom." },
 					{ title: "Nugat", image: "/wp-content/uploads/2017/10/20.png", text: "Tanke korice sa orasima i lešnicima, čokoladni fil sa nugat kremom i vanila fil sa lešnicima." },
 					{ title: "Nugat-višnja", image: "/wp-content/uploads/2017/10/12.png", text: "Tanke korice sa orasima i lešnicima premazane voćnim punjenjem višnje, čokoladni fil sa nugat kremom i vanila fil sa lešnicima." },
 					{ title: "Kindera", image: "/wp-content/uploads/2017/10/14.png", text: "Korice sa orahom, mlečni keks, nugat krem i vanila fil sa seckanom mlečnom i belom čokoladom." },
