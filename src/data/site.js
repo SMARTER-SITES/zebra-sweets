@@ -431,7 +431,15 @@ export const pages = {
 				name: "TC Gradski Dom",
 				address: "Dr Zorana Djindjica 10",
 				phone: "034/367-400",
-				hours: ["Ponedeljak - Subota: 08:00 - 20:00", "Nedelja: 10:00 - 15:00"],
+				hours: [
+					"Ponedeljak: 8:00-20:00",
+					"Utorak: 8:00-16:00",
+					"Sreda: 8:00-16:00",
+					"Četvrtak: 8:00-20:00",
+					"Petak: 8:00-20:00",
+					"Subota: 8:00-16:00",
+					"Nedelja: 9:00-15:00",
+				],
 				images: [
 					"/wp-content/uploads/2017/11/zebra-enterijer-gradski-dom-1.jpg",
 					"/wp-content/uploads/2017/11/zebra-gradski-dom-1.jpg",
@@ -441,7 +449,15 @@ export const pages = {
 				name: "Zebra Erdoglija",
 				address: "Daniciceva 109 (preko puta Y ipsilona)",
 				phone: "034/356-500",
-				hours: ["Ponedeljak - Subota: 08:00 - 20:00", "Nedelja: 10:00 - 15:00"],
+				hours: [
+					"Ponedeljak: 8:00-20:00",
+					"Utorak: 9:00-17:00",
+					"Sreda: 9:00-17:00",
+					"Četvrtak: 8:00-20:00",
+					"Petak: 8:00-20:00",
+					"Subota: 8:00-16:00",
+					"Nedelja: 9:00-15:00",
+				],
 				images: [
 					"/wp-content/uploads/2017/11/erdoglija-zebra-fasada-1.jpg",
 					"/wp-content/uploads/2017/11/erdoglija-enterijer-1.jpg",
