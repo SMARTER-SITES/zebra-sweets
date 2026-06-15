@@ -467,7 +467,7 @@ export const pages = {
 				name: "Zebra Aerodrom (Fransiza)",
 				address: "Trznica na Aerodromu",
 				phone: "034/355-338",
-				hours: ["Ponedeljak - Petak: 08:00 - 19:00", "Subota - Nedelja: 08:00 - 15:00"],
+				hours: ["Ponedeljak - Petak: 09:00 - 16:00", "Subota: 08:00 - 15:00", "Nedelja: 08:00 - 14:00"],
 				images: [
 					"/wp-content/uploads/2017/11/zebra-aerodrom-enterijer-1.jpg",
 					"/wp-content/uploads/2017/11/zebra-aerodrom-fasada-1.jpg",
