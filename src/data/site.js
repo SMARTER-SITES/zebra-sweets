@@ -451,8 +451,8 @@ export const pages = {
 				phone: "034/356-500",
 				hours: [
 					"Ponedeljak: 8:00-20:00",
-					"Utorak: 9:00-17:00",
-					"Sreda: 9:00-17:00",
+					"Utorak: 8:00-16:00",
+					"Sreda: 8:00-16:00",
 					"Četvrtak: 8:00-20:00",
 					"Petak: 8:00-20:00",
 					"Subota: 8:00-16:00",
